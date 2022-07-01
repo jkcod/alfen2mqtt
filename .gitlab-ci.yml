@@ -26,6 +26,9 @@ test:
     - npm run test:ci
   artifacts:
     when: always
+    paths:
+      # save coverage results
+      - coverage
     reports:
       junit:
         - junit.xml
