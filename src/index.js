@@ -1,13 +1,14 @@
 
 const WallboxData = require('./wallbox');
 const RestClient = require('./restclient');
+const config = require('config');
 
 async function run() {
     try {
-        const rest = new RestClient();
+        const rest = new RestClient(config);
         const wbRawData = await rest.getWallboxData();
         const wbData = new WallboxData(wbRawData);
-        
+
         console.log('Uptime: ' + wbData.getUpTime());
         console.log('Bootups: ' + wbData.getBootUps());
         console.log('Voltage L1: ' + wbData.getVoltagePhase1());
