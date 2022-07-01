@@ -2,13 +2,21 @@
   "name": "alfen",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "test:ci": "jest --config ./jest.config.js --collectCoverage --coverageDirectory=\"./coverage\" --ci --reporters=default --reporters=jest-junit --watchAll=false"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.27.2"
+  },
+  "devDependencies": {
+    "jest": "^28.1.2",
+    "jest-junit": "^14.0.0"
+  },
+  "engines": {
+    "node": ">=12.0.0"
   }
 }
