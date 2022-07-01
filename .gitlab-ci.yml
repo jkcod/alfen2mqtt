@@ -36,7 +36,7 @@ test:
 # the coverage report will be available both as a job artifact
 # and at https://gitlab.kowasoft.de/alfen-to-mqtt/
 pages:
-  stage: deploy
+  stage: .post
   dependencies:
     - test
   script:
