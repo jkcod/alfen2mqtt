@@ -10,9 +10,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.27.2"
+    "axios": "^0.27.2",
+    "config": "^3.3.7",
+    "js-yaml": "^4.1.0"
   },
   "devDependencies": {
+    "axios-mock-adapter": "^1.21.1",
     "jest": "^28.1.2",
     "jest-junit": "^14.0.0"
   },
