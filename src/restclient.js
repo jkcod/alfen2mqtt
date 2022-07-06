@@ -1,6 +1,8 @@
 const axios = require('axios');
 const https = require('https');
 
+const HEADERS = { 'Content-Type': 'alfen/json; charset=utf-8' };
+
 class RestClient {
     constructor(config) {
         this.config = config;
@@ -23,24 +25,31 @@ class RestClient {
             password: this.config.get('wallbox.password')
         };
         try {
-            const response = await this.httpClient.post(this.baseUrl + '/login', requestBody, {
-                headers: {
-                    'Content-Type': 'alfen/json; charset=utf-8'
-                }
+            await this.httpClient.post(this.baseUrl + '/login', requestBody, {
+                headers: HEADERS
             });
         } catch(e) {
             throw new Error("Login failed: " + e);
         }
+    }
 
+    async _logout() {
+        const requestBody = {};
+        try {
+            await this.httpClient.post(this.baseUrl + '/logout', requestBody, {
+                headers: HEADERS
+            });
+        } catch(e) {
+            throw new Error("Logout failed: " + e);
+        }
     }
 
     async getWallboxData() {
         await this._login();
         const response = await this.httpClient.get(this.baseUrl + '/prop?ids=2060_0,2056_0,2221_3,2221_4,2221_5,2221_A,2221_B,2221_C,2221_16,2201_0,2501_2,2221_22', {
-            headers: {
-                'Content-Type': 'alfen/json; charset=utf-8'
-            }
+            headers: HEADERS
         });
+        await this._logout();
         return response.data;
     }
 
