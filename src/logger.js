@@ -1,29 +1,16 @@
-const WallboxData = require('./wallbox');
+const { createLogger, format, transports } = require("winston");
 
-class Logger {
-    constructor(rest) {
-        this.rest = rest;
-    }
+const logLevels = {
+    fatal: 0,
+    error: 1,
+    warn: 2,
+    info: 3,
+    debug: 4,
+    trace: 5,
+};
 
-    async logWallboxData() {
-        const wbRawData = await this.rest.getWallboxData();
-        const wbData = new WallboxData(wbRawData);
-    
-        console.log('Uptime: ' + wbData.getUpTime());
-        console.log('Bootups: ' + wbData.getBootUps());
-        console.log('Voltage L1: ' + wbData.getVoltagePhase1());
-        console.log('Voltage L2: ' + wbData.getVoltagePhase2());
-        console.log('Voltage L3: ' + wbData.getVoltagePhase3());
-        console.log('Current L1: ' + wbData.getCurrentPhase1());
-        console.log('Current L2: ' + wbData.getCurrentPhase2());
-        console.log('Current L3: ' + wbData.getCurrentPhase3());
-        console.log('Active Power Total: ' + wbData.getActivePowerTotal());
-        console.log('Temperature: ' + wbData.getTemperature());
-        console.log('Status Code: ' + wbData.getStatusCode());
-        console.log('Status: ' + wbData.getStatusText());
-        console.log('Meter Reading: ' + wbData.getMeterReading());
-    }
-
-}
-
-module.exports = Logger;
+module.exports = createLogger({
+    format: format.combine(format.timestamp(), format.json()),
+    levels: logLevels,
+    transports: [new transports.Console()],
+});

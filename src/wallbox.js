@@ -20,6 +20,7 @@ class WallboxData {
             7: "Cable connected",
             10: "Vehicle connected",
             11: "Charging",
+            36: "Paused"
         };
     }
 
