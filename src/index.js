@@ -1,15 +1,17 @@
 
-const Logger = require('./logger');
+const WallboxLogger = require('./wallboxlogger');
 const RestClient = require('./restclient');
+const Log = require('./logger');
 const config = require('config');
 
 async function run() {
     try {
-        await new Logger(new RestClient(config)).logWallboxData();
+        const wbRawData = await new RestClient(config).getWallboxData();
+        await new WallboxLogger().logWallboxData(wbRawData);
     } catch (e) {
-        console.error('Error occured during retrieving Wallbox data. Error Message: ' + e.message);
+        Log.error('Error occured during retrieving Wallbox data. Error Message: ' + e.message);
     } finally {
-        console.log('Reschedule in 20 seconds');
+        Log.info('Reschedule in 20 seconds');
         setTimeout(() => {
             return run();
         }, 20 * 1000);
