@@ -29,7 +29,7 @@ class WallboxData {
     }
 
     getUpTime() {
-        return Number(this.getSensorValue('uptime'));
+        return Math.floor(Number(this.getSensorValue('uptime')) / 1000 / 60 / 60); // in hours
     }
 
     getBootUps() {
@@ -49,15 +49,15 @@ class WallboxData {
     }
 
     getVoltagePhase1() {
-        return Number(this.getSensorValue('voltage_l1').toFixed(2));
+        return Number(this.getSensorValue('voltage_l1').toFixed(0));
     }
 
     getVoltagePhase2() {
-        return Number(this.getSensorValue('voltage_l2').toFixed(2));
+        return Number(this.getSensorValue('voltage_l2').toFixed(0));
     }
 
     getVoltagePhase3() {
-        return Number(this.getSensorValue('voltage_l3').toFixed(2));
+        return Number(this.getSensorValue('voltage_l3').toFixed(0));
     }
 
     getActivePowerTotal() {
@@ -65,7 +65,7 @@ class WallboxData {
     }
 
     getTemperature() {
-        return Number(this.getSensorValue('temperature').toFixed(2));
+        return Number(this.getSensorValue('temperature').toFixed(0));
     }
 
     getStatusText() {
@@ -78,6 +78,13 @@ class WallboxData {
 
     getMeterReading() {
         return Number((this.getSensorValue('meter_reading') / 1000).toFixed(2));
+    }
+
+    toString() {
+        return "Wallbox Data: [Uptime:" + this.getUpTime() + " ,Bootups:" + this.getBootUps() + " ,L1:" + this.getCurrentPhase1() + ",L2:" + this.getCurrentPhase2() + ",L3:" + this.getCurrentPhase3() +
+            ",L1V:" + this.getVoltagePhase1() + ",L2V:" + this.getVoltagePhase2() + ",L3V:" + this.getVoltagePhase3() +
+            ",ActivePowerTotal:" + this.getActivePowerTotal() + ",Temp:" + this.getTemperature() +
+            ",StatusCode:" + this.getStatusCode() + ",MeterReading:" + this.getMeterReading() + "]";
     }
 }
 

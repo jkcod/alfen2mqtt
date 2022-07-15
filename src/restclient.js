@@ -1,7 +1,7 @@
 const axios = require('axios');
 const https = require('https');
 
-const HEADERS = { 'Content-Type': 'alfen/json; charset=utf-8' };
+const HEADERS = { 'Content-Type': 'application/json; charset=utf-8' };
 
 class RestClient {
     constructor(config) {
@@ -51,6 +51,17 @@ class RestClient {
         });
         await this._logout();
         return response.data;
+    }
+
+    async setMaxCurrent(maxCurrent) {
+        await this._login();
+        const requestBody = {
+            '2062_0': {'id': '2062_0', 'value': maxCurrent}
+        }
+        await this.httpClient.post(this.baseUrl + '/prop', requestBody, {
+            headers: HEADERS
+        });
+        await this._logout();
     }
 
     getAxiosClientInstance() {

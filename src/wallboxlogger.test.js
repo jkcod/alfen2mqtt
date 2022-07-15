@@ -67,20 +67,20 @@ let RestClientMock = new RestClient();
 
 describe('Wallbox logging', () => {
     test('Log Wallbox Data', async () => {
-        const logspy = jest.spyOn(Log, 'info');
+        const logspy = jest.spyOn(Log, 'debug');
         const wbRawData = await RestClientMock.getWallboxData();
         const logger = new WallboxLogger();
-        await logger.logWallboxData(wbRawData);
-        expect(logspy).toHaveBeenNthCalledWith(1, expect.stringContaining('Uptime: 5569129173'));
+        await logger.logWallboxDataRaw(wbRawData);
+        expect(logspy).toHaveBeenNthCalledWith(1, expect.stringContaining('Uptime: 1546'));
         expect(logspy).toHaveBeenNthCalledWith(2, expect.stringContaining('Bootups: 18'));
-        expect(logspy).toHaveBeenNthCalledWith(3, expect.stringContaining('Voltage L1: 231.29'));
-        expect(logspy).toHaveBeenNthCalledWith(4, expect.stringContaining('Voltage L2: 232.47'));
-        expect(logspy).toHaveBeenNthCalledWith(5, expect.stringContaining('Voltage L3: 232.1'));
+        expect(logspy).toHaveBeenNthCalledWith(3, expect.stringContaining('Voltage L1: 231'));
+        expect(logspy).toHaveBeenNthCalledWith(4, expect.stringContaining('Voltage L2: 232'));
+        expect(logspy).toHaveBeenNthCalledWith(5, expect.stringContaining('Voltage L3: 232'));
         expect(logspy).toHaveBeenNthCalledWith(6, expect.stringContaining('Current L1: 0'));
         expect(logspy).toHaveBeenNthCalledWith(7, expect.stringContaining('Current L2: 0'));
         expect(logspy).toHaveBeenNthCalledWith(8, expect.stringContaining('Current L3: 0'));
         expect(logspy).toHaveBeenNthCalledWith(9, expect.stringContaining('Active Power Total: 0'));
-        expect(logspy).toHaveBeenNthCalledWith(10, expect.stringContaining('Temperature: 31.88'));
+        expect(logspy).toHaveBeenNthCalledWith(10, expect.stringContaining('Temperature: 32'));
         expect(logspy).toHaveBeenNthCalledWith(11, expect.stringContaining('Status Code: 4'));
         expect(logspy).toHaveBeenNthCalledWith(12, expect.stringContaining('Status: Available'));
         expect(logspy).toHaveBeenNthCalledWith(13, expect.stringContaining('Meter Reading: 344.49'));
