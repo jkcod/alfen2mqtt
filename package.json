@@ -13,6 +13,7 @@
     "axios": "^0.27.2",
     "config": "^3.3.7",
     "js-yaml": "^4.1.0",
+    "mqtt": "^4.3.7",
     "winston": "^3.8.1"
   },
   "devDependencies": {

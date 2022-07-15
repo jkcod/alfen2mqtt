@@ -3,5 +3,15 @@
         "host": "127.0.0.1",
         "user": "user",
         "password": "password"
+    },
+    "mqtt": {
+        "server": "tcp://yourip",
+        "port": 1883,
+        "username": "yourusername",
+        "password": "yourpassword",
+        "clientId": "yourclientid",
+        "connectTimeout": 30000,
+        "keepalive": 12000,
+        "reconnectPeriod": 1000
     }
 }

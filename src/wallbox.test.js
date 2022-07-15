@@ -6,11 +6,11 @@ describe("Wallbox DAO testing", () => {
             "properties": [
                 {
                     "id": "2060_0",
-                    "value": 13423
+                    "value": 145047000
                 }
             ]
         };
-        expect(new WallboxData(rawData).getUpTime()).toBe(13423);
+        expect(new WallboxData(rawData).getUpTime()).toBe(40);
     });
 
     test('Get voltage L1', () => {
@@ -22,7 +22,7 @@ describe("Wallbox DAO testing", () => {
                 }
             ]
         };
-        expect(new WallboxData(rawData).getVoltagePhase1()).toBe(223.13);
+        expect(new WallboxData(rawData).getVoltagePhase1()).toBe(223);
     });
 
     test('Get voltage L2', () => {
@@ -34,7 +34,7 @@ describe("Wallbox DAO testing", () => {
                 }
             ]
         };
-        expect(new WallboxData(rawData).getVoltagePhase2()).toBe(223.14);
+        expect(new WallboxData(rawData).getVoltagePhase2()).toBe(223);
     });
 
     test('Get voltage L3', () => {
@@ -46,7 +46,7 @@ describe("Wallbox DAO testing", () => {
                 }
             ]
         };
-        expect(new WallboxData(rawData).getVoltagePhase3()).toBe(223.15);
+        expect(new WallboxData(rawData).getVoltagePhase3()).toBe(223);
     });
 
     test('Get number of bootups', () => {
@@ -118,7 +118,7 @@ describe("Wallbox DAO testing", () => {
                 }
             ]
         };
-        expect(new WallboxData(rawData).getTemperature()).toBe(31.66);
+        expect(new WallboxData(rawData).getTemperature()).toBe(32);
     });
 
     test('Get meter reading', () => {
@@ -203,5 +203,61 @@ describe("Wallbox DAO testing", () => {
             ]
         };
         expect(new WallboxData(rawData).getStatusCode()).toBe(4);
+    });
+
+    test('toString', () => {
+        const rawData = {
+            "properties": [
+                {
+                    "id": "2060_0",
+                    "value": 5569129173
+                },
+                {
+                    "id": "2056_0",
+                    "value": 18
+                },
+                {
+                    "id": "2221_3",
+                    "value": 231.2899932861328
+                },
+                {
+                    "id": "2221_4",
+                    "value": 232.47000122070312
+                },
+                {
+                    "id": "2221_5",
+                    "value": 232.09999084472656
+                },
+                {
+                    "id": "2221_A",
+                    "value": 0
+                },
+                {
+                    "id": "2221_B",
+                    "value": 0
+                },
+                {
+                    "id": "2221_C",
+                    "value": 0
+                },
+                {
+                    "id": "2221_16",
+                    "value": 0
+                },
+                {
+                    "id": "2201_0",
+                    "value": 31.875
+                },
+                {
+                    "id": "2501_2",
+                    "value": 4
+                },
+                {
+                    "id": "2221_22",
+                    "value": 344487
+                }
+            ]
+        };
+        expect(new WallboxData(rawData).toString()).toBe("Wallbox Data: [Uptime:1546 ,Bootups:18 ,L1:0,L2:0,L3:0,L1V:231,L2V:232,L3V:232,ActivePowerTotal:0,Temp:32,StatusCode:4,MeterReading:344.49]");
     });
 });
