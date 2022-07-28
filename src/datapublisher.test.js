@@ -1,5 +1,3 @@
-const WallboxData = require('./wallbox');
-const Log = require('./logger');
 const config = require('config');
 const MqttHandler = require('./mqtt');
 const DataPublisher = require('./datapublisher');
