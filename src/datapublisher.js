@@ -35,12 +35,10 @@ class DataPublisher {
     }
 
     _dataChanged(newData) {
-        if (!this._hasCurrentData()) {
-            Log.info('mqtt - data changed (is not set)');
-            return true;
-        }
-
         const currentData = this._getCurrentData();
+
+        Log.debug('CURRENT DATA: ' + currentData.toString());
+        Log.debug('NEW DATA: ' + newData.toString());
 
         if (currentData.toString() !== newData.toString()) {
             Log.info('mqtt - data changed');
@@ -52,10 +50,6 @@ class DataPublisher {
 
     _saveCurrentData(data) {
         this.currentData = data;
-    }
-
-    _hasCurrentData() {
-        return !!this.currentData;
     }
 
     _getCurrentData() {

@@ -258,6 +258,6 @@ describe("Wallbox DAO testing", () => {
                 }
             ]
         };
-        expect(new WallboxData(rawData).toString()).toBe("Wallbox Data: [Uptime:1546 ,Bootups:18 ,L1:0,L2:0,L3:0,L1V:231,L2V:232,L3V:232,ActivePowerTotal:0,Temp:32,StatusCode:4,MeterReading:344.49]");
+        expect(new WallboxData(rawData).toString()).toBe("Wallbox Data: [Uptime:1546,Bootups:18,L1:0,L2:0,L3:0,L1V:231,L2V:232,L3V:232,ActivePowerTotal:0,Temp:32,StatusCode:4,MeterReading:344.49]");
     });
 });

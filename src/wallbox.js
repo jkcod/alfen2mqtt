@@ -81,7 +81,7 @@ class WallboxData {
     }
 
     toString() {
-        return "Wallbox Data: [Uptime:" + this.getUpTime() + " ,Bootups:" + this.getBootUps() + " ,L1:" + this.getCurrentPhase1() + ",L2:" + this.getCurrentPhase2() + ",L3:" + this.getCurrentPhase3() +
+        return "Wallbox Data: [Uptime:" + this.getUpTime() + ",Bootups:" + this.getBootUps() + ",L1:" + this.getCurrentPhase1() + ",L2:" + this.getCurrentPhase2() + ",L3:" + this.getCurrentPhase3() +
             ",L1V:" + this.getVoltagePhase1() + ",L2V:" + this.getVoltagePhase2() + ",L3V:" + this.getVoltagePhase3() +
             ",ActivePowerTotal:" + this.getActivePowerTotal() + ",Temp:" + this.getTemperature() +
             ",StatusCode:" + this.getStatusCode() + ",MeterReading:" + this.getMeterReading() + "]";

@@ -17,9 +17,8 @@ class MqttHandler {
             port: this.config.mqtt.port
         });
 
-        this.client.on('error', (topic, message) => {
-            message = message || '';
-            Log.error('mqtt error - ' + topic + ' : ' + message.toString());
+        this.client.on('error', (error) => {
+            Log.error('mqtt error: ' + error.message);
         });
         this.client.on('close', () => {
             Log.error('mqtt close');
@@ -28,27 +27,23 @@ class MqttHandler {
             Log.error('mqtt reconnect');
         });
         this.client.on('connect', () => {
-            Log.info('connected');
+            Log.info('mqtt connected');
         });
 
     };
 
     publish(part, data) {
-        try {
-            if (typeof data === 'undefined') {
-                throw new Error('data not defined')
-            }
-            if (data === null) {
-                return;
-            }
-            const topic = 'wallbox/data/' + part;
-            data = (typeof data === 'string' ? data : JSON.stringify(data));
-
-            Log.info('mqtt - publish on topic - ' + topic + ' ' + data);
-            this.client.publish(topic, data, { qos: 2, retain: false });
-        } catch (e) {
-            Log.error("Error during MQTT publish. " + e);
+        if (typeof data === 'undefined') {
+            throw new Error('data not defined')
         }
+        if (data === null) {
+            return;
+        }
+        const topic = 'wallbox/data/' + part;
+        data = (typeof data === 'string' ? data : JSON.stringify(data));
+
+        Log.debug('mqtt - publish on topic - ' + topic + ' ' + data);
+        this.client.publish(topic, data, { qos: 2, retain: false });
     };
 
     subscribeTo(topic) {

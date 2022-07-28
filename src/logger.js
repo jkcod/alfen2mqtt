@@ -12,5 +12,5 @@ const logLevels = {
 module.exports = createLogger({
     format: format.combine(format.timestamp(), format.json()),
     levels: logLevels,
-    transports: [new transports.Console()],
+    transports: [new transports.Console({ level: 'info' })],
 });

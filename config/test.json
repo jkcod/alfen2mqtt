@@ -10,8 +10,8 @@
         "username": "yourusername",
         "password": "yourpassword",
         "clientId": "yourclientid",
-        "connectTimeout": 30000,
-        "keepalive": 12000,
-        "reconnectPeriod": 1000
+        "connectTimeout": 0,
+        "keepalive": 0,
+        "reconnectPeriod": 0
     }
 }

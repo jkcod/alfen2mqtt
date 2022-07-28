@@ -20,7 +20,7 @@ async function run() {
     try {
         await publisher.publishNewData();
     } catch (e) {
-        Log.error('Error occured during retrieving Wallbox data. Error Message: ' + e.message);
+        Log.error('Error occured during retrieving / publishing Wallbox data. Error Message: ' + e.message);
     } finally {
         Log.info('Reschedule in 20 seconds');
         setTimeout(() => {
