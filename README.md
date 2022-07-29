@@ -4,6 +4,6 @@ This project is heavily inspired by the following project: https://github.com/eg
 
 This project is written in JavaScript with the aim of publishing the Wallbox data via MQTT to be further processed by any kind of 'Smart Home' system (in my case: Loxone).
 
-Before running the script, adjsut the `default.template.json` file in the config folder to your needs, and rename it to `default.json`.
+Before running the script, adjust the `default.template.json` file in the config folder to your needs, and rename it to `default.json`.
 
-Now, yo can run the script with `node src/index.js`
+Now, you can run the script with `node src/index.js`
