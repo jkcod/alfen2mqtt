@@ -20,7 +20,7 @@ describe("Rest Client testing", () => {
         await restClient.getWallboxData();
     });
 
-    test('Set Wellbox Max Current (with Login)', async () => {
+    test('Set Wallbox Max Current (with Login)', async () => {
 
         const maxCurrent = 10;
         const maxCurrentRequestBody = {
