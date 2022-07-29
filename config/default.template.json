@@ -1,4 +1,6 @@
 {
+    "logLevel": "info",
+    "refreshIntervalSeconds": 30,
     "wallbox": {
         "host": "<ip of wallbox>",
         "user": "admin",

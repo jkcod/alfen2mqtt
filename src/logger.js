@@ -1,3 +1,5 @@
+const config = require('config');
+
 const { createLogger, format, transports } = require("winston");
 
 const logLevels = {
@@ -12,5 +14,5 @@ const logLevels = {
 module.exports = createLogger({
     format: format.combine(format.timestamp(), format.json()),
     levels: logLevels,
-    transports: [new transports.Console({ level: 'info' })],
+    transports: [new transports.Console({ level: config.logLevel })],
 });
