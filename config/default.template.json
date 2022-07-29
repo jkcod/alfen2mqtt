@@ -1,0 +1,17 @@
+{
+    "wallbox": {
+        "host": "<ip of wallbox>",
+        "user": "admin",
+        "password": "<wallbox password>"
+    },
+    "mqtt": {
+        "server": "tcp://<ip of mqtt broker>",
+        "port": "<port of mqtt broker>",
+        "username": "<mqtt user>",
+        "password": "<mqtt password>",
+        "clientId": "<identifier that should be user for the mqtt client>",
+        "connectTimeout": 30000,
+        "keepalive": 12000,
+        "reconnectPeriod": 1000
+    }
+}

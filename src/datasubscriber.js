@@ -17,7 +17,7 @@ class DataSubscriber {
             }
             const maxCurrent = parseInt(message.toString(), 10);
             if (maxCurrent > 16 | maxCurrent < 6) {
-                Log.info("Max current must be between 6 and 16 amp");
+                Log.warn("Max current must be between 6 and 16 amp. Skipping it.");
                 return;
             }
             Log.info("Setting max current to " + maxCurrent + " amp");
